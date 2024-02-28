@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>University Application Form</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <form name="universityApplicationForm" onsubmit="return validateForm(event)" action="#" method="post">
+            <h2>University Application Form</h2>
+            <div class="row">
+              <label>Full Name:</label>
+              <input type="text" name="fullName">
+              <div class="error" id="nameErr"></div>
+            </div>
+            <div class="row">
+              <label>Email Address:</label>
+              <input type="text" name="email">
+              <div class="error" id="emailErr"></div>
+            </div>
+            <div class="row">
+              <label>Phone Number:</label>
+              <input type="text" name="phone">
+              <div class="error" id="phoneErr"></div>
+            </div>
+            <div class="row">
+              <label>Gender:</label>
+              <div class="form-inline">
+                <label><input type="radio" name="gender" value="male"> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+              </div>
+              <div class="error" id="genderErr"></div>
+            </div>
+            <div class="row">
+              <label>Program of Interest:</label>
+              <select name="program">
+                <option value="select">Select Program</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Business Administration">Business Administration</option>
+                <option value="Psychology">Psychology</option>
+                <option value="Engineering">Engineering</option>
+              </select>
+              <div class="error" id="programErr"></div>
+            </div>
+            <div class="row">
+              <label>Extracurricular Activities:</label>
+              <div class="form-inline">
+                <label><input type="checkbox" name="activities[]" value="sports"> Sports</label>
+                <label><input type="checkbox" name="activities[]" value="music"> Music</label>
+                <label><input type="checkbox" name="activities[]" value="art"> Art</label>
+              </div>
+            </div>
+            <div class="row">
+              <label>Preferred Campus:</label>
+              <input list="campuses" name="campus">
+              <datalist id="campuses">
+                <option value="Downtown Campus">
+                <option value="East Campus">
+                <option value="West Campus">
+                <option value="North Campus">
+              </datalist>
+            </div>
+            <div class="row">
+              <input type="submit" value="Submit">
+            </div>
+            <div class="success-msg" id="successMsg"></div>
+        </form>
+    </div>
+    <script>
+          function printError(elemId, hintMsg) {
+              document.getElementById(elemId).innerHTML = hintMsg;
+          }
+          
+          function validateForm(event) {
+              event.preventDefault(); 
+          
+              let fullName = document.universityApplicationForm.fullName.value;
+              let email = document.universityApplicationForm.email.value;
+              let phone = document.universityApplicationForm.phone.value;
+              let gender = document.universityApplicationForm.gender.value;
+              let program = document.universityApplicationForm.program.value;
+          
+              let nameErr = emailErr = phoneErr = genderErr = programErr = true;
+              if (fullName == "") {
+                  printError("nameErr", "Please enter your full name");
+              } else {
+                  let regex = /^[a-zA-Z\s]+$/;
+                  if (regex.test(fullName) === false) {
+                      printError("nameErr", "Please enter a valid full name");
+                  } else {
+                      printError("nameErr", "");
+                      nameErr = false;
+                  }
+              }
+              if (email == "") {
+                  printError("emailErr", "Please enter your email address");
+              } else {
+                  let regex = /^\S+@\S+\.\S+$/;
+                  if (regex.test(email) === false) {
+                      printError("emailErr", "Please enter a valid email address");
+                  } else {
+                      printError("emailErr", "");
+                      emailErr = false;
+                  }
+              }
+              if (phone == "") {
+                  printError("phoneErr", "Please enter your phone number");
+              } else {
+                  let regex = /^[0-9]{10}$/;
+                  if (regex.test(phone) === false) {
+                      printError("phoneErr", "Please enter a valid 10-digit phone number");
+                  } else {
+                      printError("phoneErr", "");
+                      phoneErr = false;
+                  }
+              }
+              if (gender == "") {
+                  printError("genderErr", "Please select your gender");
+              } else {
+                  printError("genderErr", "");
+                  genderErr = false;
+              }
+              if (program == "select") {
+                  printError("programErr", "Please select a program");
+              } else {
+                  printError("programErr", "");
+                  programErr = false;
+              }
+              if (!nameErr && !emailErr && !phoneErr && !genderErr && !programErr) {
+                  document.getElementById("successMsg").innerHTML = "Form submitted successfully!";
+                  document.universityApplicationForm.reset(); 
+              }
+              return false;
+          };
+        </script>
+    </body>
+</html>
+          

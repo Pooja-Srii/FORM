@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url("https://cdn.pixabay.com/photo/2016/11/02/22/53/background-1792968_960_720.jpg"); 
+    height:100vh;
+    background-repeat: no-repeat; 
+    background-size: cover;
+
+}
+
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    background: #21dbad;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+form:hover {
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  .row {
+    margin-bottom: 10px;
+  }
+  label {
+    font-weight: bold;
+    color: #555;
+    font-size: 14px;
+  }
+  input[type="text"], select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  input[type="text"]:hover, select:hover {
+    border-color: #999;
+  }
+  input[type="text"]:focus, select:focus {
+    border-color: black;
+    outline: none;
+  }
+  input[type="radio"] {
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+  input[type="checkbox"] {
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+  .form-inline label {
+    margin-right: 15px;
+    color: #555;
+  }
+  .error {
+    color: #d9534f;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  input[type="submit"] {
+    background-color: #5cb85c;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+  }
+  input[type="submit"]:hover {
+    background-color: #dace20;
+  }
